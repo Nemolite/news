@@ -29,20 +29,15 @@ def category(request,id):
 
 def post(request,id):
     post_one = Post.objects.filter(id=id)
-    print(post_one)
-    onepostmark = 'true'
     context = {
-        'post_one': post_one,
-        'onepostmark':onepostmark
+        'post_one': post_one
     }
     return render(request, 'articles/post.html', context=context)
 
 def dbtrening(request):
     result = Post.objects.all()
-    onepostmark = 'true'
     context = {
-        'result': result,
-        'onepostmark': onepostmark
+        'result': result
     }
     return render(request, 'articles/dbtrening.html', context=context)
 

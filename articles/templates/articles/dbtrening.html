@@ -1,7 +1,6 @@
 {% extends 'articles/basa.html' %}
 
 {% block onepost %}
-    <a href="{% url 'index' %}">На главную</a>
     {% for p in post_one %}
         <h2>{{ p.title }}</h2>
         <p>{{ p.content }}</p>
