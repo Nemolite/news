@@ -7,22 +7,30 @@
     <title>Title</title>
 </head>
 <body>
-<a href="/admin/login/">Админка</a>
-<p></p>
+<div class="header">
+    <div class="header-logo">
+        <a href="{% url 'index' %}">
+            <img src="{%  static 'articles/img/logo.png' %}" alt="Логотип">
+        </a>
+    </div>
+    <div class="header-menu">
+        <nav>
+            <ul class="header-menu-main">
+                {% if not onepostmark %}
+                    <li><a href="{% url 'index' %}">Все статьи</a></li>
+                    <li><a href="{% url 'dbtrening' %}">Тренировочная база</a></li>
+                    <li><a href="{% url 'myforms' %}">Формы</a></li>
+                    <li><a href="{% url 'spec' %}">Связь двух таблиц</a></li>
+                    <li><a href="{% url 'tomany' %}">Многие ко многим</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+    <div class="header-admin">
+        <a href="/admin/login/">Админка</a>
+    </div>
+</div>
 
-{% if not onepostmark %}
-    <a href="{% url 'index' %}">Все статьи</a>
-<p></p>
-    <a href="{% url 'dbtrening' %}">Тренировочная база</a>
-<p></p>
-    <a href="{% url 'myforms' %}">Формы</a>
-<p></p>
-<a href="{% url 'spec' %}">Связь двух таблиц</a>
-<p></p>
-<a href="{% url 'tomany' %}">Многие ко многим</a>
-
-
-{% endif %}
 
 {% block contentcategory %}
 {% endblock %}
