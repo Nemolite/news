@@ -1,0 +1,9 @@
+{% extends 'articles/basa.html' %}
+
+{% block tomany %}
+
+    {% for incs in curs  %}
+        <h2>{{ incs.name }}</h2>
+    {% endfor %}
+
+{% endblock %}

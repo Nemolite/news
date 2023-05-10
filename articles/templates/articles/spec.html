@@ -1,0 +1,34 @@
+{% extends 'articles/basa.html' %}
+
+{% block spec %}
+  <h2>{{ spec.name }}</h2>
+  <p>{{ spec.price }}</p>
+   <p>{{ spec.company.name }}</p>
+<p>Id company {{ spec.company.id }}</p>
+<p>{{ marka }}</p>
+
+{% for m in marka  %}
+        <h2>{{ m.name }}</h2>
+       <p>{{ m.price }}</p>
+    {% endfor %}
+
+<hr>
+
+{% for mb in products  %}
+        <h2>{{ mb.name }}</h2>
+       <p>{{ mb.price }}</p>
+    {% endfor %}
+
+{{ count }}
+
+<hr>
+<hr>
+{% for mbc in allproduct  %}
+        <h2>{{ mbc.name }}</h2>
+       <p>{{ mbc.price }}</p>
+    {% endfor %}
+
+{{ count }}
+
+
+{% endblock %}

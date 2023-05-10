@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{%  static 'articles/css/style.css' %}">
+    <title>Title</title>
+</head>
+<body>
+<a href="/admin/login/">Админка</a>
+<p></p>
+
+{% if not onepostmark %}
+    <a href="{% url 'index' %}">Все статьи</a>
+<p></p>
+    <a href="{% url 'dbtrening' %}">Тренировочная база</a>
+<p></p>
+    <a href="{% url 'myforms' %}">Формы</a>
+<p></p>
+<a href="{% url 'spec' %}">Связь двух таблиц</a>
+<p></p>
+<a href="{% url 'tomany' %}">Многие ко многим</a>
+
+
+{% endif %}
+
+{% block contentcategory %}
+{% endblock %}
+<p></p>
+{% block contentpost %}
+{% endblock %}
+
+{% block onepost %}
+{% endblock %}
+
+{% block person %}
+{% endblock %}
+
+{% block myform %}
+{% endblock %}
+
+{% block spec %}
+{% endblock %}
+<hr>
+{% block tomany %}
+{% endblock %}
+
+
+<script src="{% static 'articles/js/script.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{% extends 'articles/basa.html' %}
+
+{% block onepost %}
+    <a href="{% url 'index' %}">На главную</a>
+    {% for p in post_one %}
+        <h2>{{ p.title }}</h2>
+        <p>{{ p.content }}</p>
+    {% endfor %}
+{% endblock %}
+
+{% block person %}
+<p></p>
+<a href="{% url 'insert' %}">Заполнить базу</a>
+<p></p>
+<a href="{% url 'gett' %}">Извлечь</a>
+<p></p>
+<a href="{% url 'updater' %}">Изенить</a>
+{{ result }}
+    {% for r in result %}
+        <h2>{{ r.name }}</h2>
+        <p>{{ r.bron }}</p>
+        <p>{{ r.locic }}</p>
+        <p>{{ r.age }}</p>
+        <p>{{ r.test }}</p>
+    {% endfor %}
+<p></p>
+<hr>
+{% for g in getres %}
+        <h2>{{ g.name }}</h2>
+        <p>{{ g.bron }}</p>
+        <p>{{ g.locic }}</p>
+        <p>{{ g.age }}</p>
+        <p>{{ g.test }}</p>
+    {% endfor %}
+<p></p>
+        <h2>{{ u.name }}</h2>
+        <p>{{ u.bron }}</p>
+        <p>{{ u.locic }}</p>
+        <p>{{ u.age }}</p>
+        <p>{{ u.test }}</p>
+
+<h2>count = {{ counter }}</h2>
+{% endblock %}
