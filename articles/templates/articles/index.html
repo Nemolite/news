@@ -1,7 +1,8 @@
 {% extends 'articles/basa.html' %}
 
 {% block contentcategory %}
-<ul>
+        <h2><a href="{% url 'index' %}">Все статьи</a></h2>
+<ul class="category-sction">
     {% for c in category %}
 
         <li>

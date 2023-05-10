@@ -254,23 +254,22 @@ text-decoration: none;
     background-color:#50C878;
     margin:0px;
     padding:0px;
+    display: flex;
+    flex-direction: row;
 }
 .header-logo {
     width:25%;
     height:80px;
-    float:left;
 }
 
 .header-menu {
     width:55%;
     height:80px;
-    float:left;
 }
 
 .header-admin {
     width:19.5%;
     height:80px;
-    float:left;
     padding-top:25px;
 }
 
@@ -292,4 +291,27 @@ text-decoration: none;
 .header-menu-main a {
     text-decoration:none;
     font-size:20px;
+}
+
+/* Стили для контента и сайтбара*/
+.main-section {
+    width:80%;
+    margin:0 auto;
+    display: flex;
+}
+.main-sidebar {
+    width:20%;
+}
+.main-content {
+    width:80%;
+}
+
+.main-sction-title{
+    text-align: center;
+    font-size:28px;
+}
+
+/* Section category*/
+.category-sction {
+   list-style: none;
 }
