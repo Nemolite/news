@@ -1,6 +1,7 @@
 {% extends 'articles/basa.html' %}
 {% block myform %}
-<form action="{% url 'insforms' %}" method="post">
+ <h2 class="main-sction-title">Формы ввода данных</h2>
+<form action="{% url 'insforms' %}" method="post" id="myform" name="myform">
      {% csrf_token %}
         {{ form.as_p }}
     <input type="submit" value="Submit">
