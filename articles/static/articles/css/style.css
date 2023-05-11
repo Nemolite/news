@@ -312,6 +312,13 @@ text-decoration: none;
 }
 
 /* Section category*/
-.category-sction {
+.category-sction,
+.student-sction {
    list-style: none;
+}
+
+/*section many-to-many*/
+.many-to-many {
+    width:80%;
+    margin:0 auto;
 }

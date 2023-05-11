@@ -15,7 +15,11 @@ urlpatterns = [
     path('myforms/',myforms,name='myforms' ),
     path('myforms/insforms/',insforms,name='insforms' ),
     path('spec/',spec,name='spec' ),
-    path('tomany/',tomany,name='tomany' ),
+
+    path('tomany/',manytomany,name='tomany' ),
+    path('stud/<int:id>/',stud,name='stud' ),
+    path('curs/<int:id>/',curs,name='curs' ),
+
     path('test/',test,name='test' ),
 
 

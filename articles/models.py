@@ -83,6 +83,9 @@ class Curse(models.Model):
         verbose_name='Курсы'
         verbose_name_plural = 'Курсы'
 
+    def get_absolute_url(self):
+        return f'/curs/{self.id}/'
+
 class Student(models.Model):
     name = models.CharField(max_length=200, verbose_name='Имя студента')
     curses =models.ManyToManyField(Curse)
@@ -94,6 +97,10 @@ class Student(models.Model):
         verbose_name='Студенты'
         verbose_name_plural = 'Студенты'
         ordering= ['id']
+
+    def get_absolute_url(self):
+        return f'/stud/{self.id}/'
+        #return reverse('category',kwargs={'id':self.id})
 
 
 

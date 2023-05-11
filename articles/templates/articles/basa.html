@@ -36,6 +36,10 @@
             {% block contentcategory %}
             {% endblock %}
 
+         <!-- Многие ко многим-->
+            {% block students %}
+            {% endblock %}
+
     </div>
     <div class="main-content">
 
@@ -46,8 +50,20 @@
             {% block myform %}
             {% endblock %}
 
+            <!-- Многие ко многим-->
+            {% block curses %}
+            {% endblock %}
+
     </div>
 
+</div>
+
+<div class="many-to-many">
+    {% block courforstud %}
+    {% endblock %}
+
+    {% block studforcurs %}
+    {% endblock %}
 </div>
 
 {% block onepost %}
@@ -60,9 +76,7 @@
 
 {% block spec %}
 {% endblock %}
-<hr>
-{% block tomany %}
-{% endblock %}
+
 
 
 <script src="{% static 'articles/js/script.js' %}"></script>

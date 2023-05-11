@@ -1,9 +1,60 @@
 {% extends 'articles/basa.html' %}
+{% block students %}
 
-{% block tomany %}
+    <h2 class="main-sction-title">Студенты</h2>
 
-    {% for incs in curs  %}
-        <h2>{{ incs.name }}</h2>
-    {% endfor %}
+        <ul class="category-sction">
+            {% for stud in students  %}
+
+                <li>
+                   <h2> <a href="{{ stud.get_absolute_url }}">{{stud.name}}</a></h2>
+                </li>
+
+            {% endfor %}
+        </ul>
+{% endblock %}
+
+{% block curses %}
+<h2 class="main-sction-title">Курсы</h2>
+
+        <ul class="student-sction">
+            {% for curs in curses  %}
+
+                <li>
+                   <h2> <a href="{{ curs.get_absolute_url }}">{{curs.name}}</a></h2>
+                </li>
+
+            {% endfor %}
+        </ul>
+
+{% endblock %}
+
+{% block courforstud %}
+<h2 class="main-sction-title">Курсы студента {{ stud.name }} </h2>
+
+        <ul class="student-sction">
+            {% for cfs in courforstud  %}
+
+                <li>
+                   {{cfs.name}}
+                </li>
+
+            {% endfor %}
+        </ul>
+
+{% endblock %}
+
+{% block studforcurs %}
+<h2 class="main-sction-title">Cтуденты курса {{ curs.name }} </h2>
+
+        <ul class="student-sction">
+            {% for sfc in studforcurs  %}
+
+                <li>
+                   {{sfc.name}}
+                </li>
+
+            {% endfor %}
+        </ul>
 
 {% endblock %}

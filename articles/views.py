@@ -103,17 +103,43 @@ def spec(request):
                                                           'products':products,
                                                           'count':count,
                                                           'allproduct':allproduct})
-def tomany(request):
-    #st_vik = Student.objects.create(name="Виктор")
-    #st_vik.curses.create(name="Информатика")
-    #info = Student.objects.all()
-    curs = Curse.objects.all()
-    print(curs)
+def manytomany(request):
+    students = Student.objects.all()
+    curses = Curse.objects.all()
     contex= {
-        #'info': info,
-        'curs':curs
+        'students': students,
+        'curses':curses
     }
     return render(request, 'articles/tomany.html', context=contex)
+
+def stud(request,id):
+    students = Student.objects.all()
+    curses = Curse.objects.all()
+    stud = Student.objects.get(id=id)
+    courforstud = Student.objects.get(id=id).curses.all()
+    print(courforstud)
+    contex = {
+        'students': students,
+        'curses': curses,
+        'courforstud': courforstud,
+        'stud': stud,
+    }
+    return render(request, 'articles/tomany.html', context=contex)
+
+def curs(request,id):
+    students = Student.objects.all()
+    curses = Curse.objects.all()
+    curs = Curse.objects.get(id=id)
+    studforcurs = Student.objects.filter(curses__name=curs.name)
+    print(studforcurs)
+    contex = {
+        'students': students,
+        'curses': curses,
+        'studforcurs': studforcurs,
+        'curs': curs,
+    }
+    return render(request, 'articles/tomany.html', context=contex)
+
 
 
 def test(request):
