@@ -140,6 +140,13 @@ def curs(request,id):
     }
     return render(request, 'articles/tomany.html', context=contex)
 
+def formtest(request):
+    if request.method == "POST":
+        inpname = request.POST.get("inpname")
+        print(str(inpname))
+
+    #return render(request, 'articles/test.html')
+    return HttpResponse('good')
 
 
 def test(request):

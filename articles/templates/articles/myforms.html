@@ -6,4 +6,17 @@
         {{ form.as_p }}
     <input type="submit" value="Submit">
 </form>
+<p></p>
+<p></p>
+<p></p>
+<hr>
+<p></p>
+<p></p>
+<p></p>
+<form action="" method="post" id="myformtest" name="myformtest">
+     {% csrf_token %}
+    <input type="text" name="inpname" id="inpname">
+    <input type="submit" name="subname" id="subname" value="Отправить">
+</form>
+<p id="result_output"></p>
 {% endblock %}

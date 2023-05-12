@@ -22,5 +22,6 @@ urlpatterns = [
 
     path('test/',test,name='test' ),
 
+    path('formtest/',formtest,name='formtest' ),
 
 ]
