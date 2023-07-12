@@ -24,4 +24,11 @@ urlpatterns = [
 
     path('formtest/',formtest,name='formtest' ),
 
+    # Каталог
+    path('shop/',shop,name='shop' ),
+
+    path('api/v1/postlist/', NewsAPIView.as_view())
+
+
+
 ]

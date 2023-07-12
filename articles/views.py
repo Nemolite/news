@@ -2,10 +2,14 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 
 # Create your views here.
+from rest_framework import generics
+
 from .forms import PersonForm
 from .models import *
 from django.db.models import Q
 from django.db.models import Subquery
+
+from .serializers import NewsSerializer
 
 
 def index(request):
@@ -167,3 +171,10 @@ def test(request):
         'yset':yset
     }
     return render(request, 'articles/test.html', context=data)
+
+def shop(request):
+    return render(request, 'shop/catalog.html')
+
+class NewsAPIView(generics.ListAPIView):
+    queryset = Post.objects.all()
+    serializer_class = NewsSerializer
