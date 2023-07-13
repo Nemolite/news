@@ -1,8 +1,11 @@
+from django.forms import model_to_dict
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 
 # Create your views here.
 from rest_framework import generics
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from .forms import PersonForm
 from .models import *
@@ -175,6 +178,19 @@ def test(request):
 def shop(request):
     return render(request, 'shop/catalog.html')
 
-class NewsAPIView(generics.ListAPIView):
-    queryset = Post.objects.all()
-    serializer_class = NewsSerializer
+# class NewsAPIView(generics.ListAPIView):
+#    queryset = Post.objects.all()
+#    serializer_class = NewsSerializer
+
+class NewsAPIView(APIView):
+    def get(self,request):
+        lst = Post.objects.all().values()
+        return Response({'post':list(lst)})
+
+    def post(self,request):
+        post_new = Post.objects.create(
+            title = request.data['title'],
+            content = request.data['content'],
+            cat_id = request.data['cat_id']
+        )
+        return Response({'post': model_to_dict(post_new)})
