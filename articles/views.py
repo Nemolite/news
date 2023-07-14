@@ -188,9 +188,25 @@ class NewsAPIView(APIView):
         return Response({'post':NewsSerializer(p, many=True).data})
 
     def post(self,request):
-        post_new = Post.objects.create(
-            title = request.data['title'],
-            content = request.data['content'],
-            cat_id = request.data['cat_id']
-        )
-        return Response({'post': model_to_dict(post_new)})
+        serializer = NewsSerializer(data= request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+
+        return Response({'post': serializer.data})
+
+    def put(self, request, *srgs,**kwargs):
+        pk = kwargs.get("pk",None)
+        if not pk:
+            return Response({"error":"Method PUT not allowed"})
+        try:
+            instance = Post.objects.get(pk=pk)
+        except:
+            return Response({"error":"Oject does not exists"})
+
+        serializer = NewsSerializer(data = request.data, instance=instance)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({"post":serializer.data})
+
+
+
