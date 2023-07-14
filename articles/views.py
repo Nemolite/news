@@ -184,8 +184,8 @@ def shop(request):
 
 class NewsAPIView(APIView):
     def get(self,request):
-        lst = Post.objects.all().values()
-        return Response({'post':list(lst)})
+        p = Post.objects.all().values()
+        return Response({'post':NewsSerializer(p, many=True).data})
 
     def post(self,request):
         post_new = Post.objects.create(
