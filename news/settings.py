@@ -132,3 +132,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_URL ='/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
 STATICFILES_DIRS = []
+
+# Раскоментировать для работы в браузере
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        # 'rest_framework.renderers.BrowsableAPIRenderer'
+    ]
+}

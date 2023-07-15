@@ -193,6 +193,10 @@ class NewsAPIUpdate(generics.UpdateAPIView):
 class NewsAPIDelete(generics.DestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = NewsSerializer
+
+class NewsAPIDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Post.objects.all()
+    serializer_class = NewsSerializer
 # class NewsAPIView(APIView):
 #     def get(self,request):
 #         p = Post.objects.all().values()
