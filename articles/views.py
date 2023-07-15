@@ -182,31 +182,44 @@ def shop(request):
 #    queryset = Post.objects.all()
 #    serializer_class = NewsSerializer
 
-class NewsAPIView(APIView):
-    def get(self,request):
-        p = Post.objects.all().values()
-        return Response({'post':NewsSerializer(p, many=True).data})
+class NewsAPIList(generics.ListCreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = NewsSerializer
 
-    def post(self,request):
-        serializer = NewsSerializer(data= request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-
-        return Response({'post': serializer.data})
-
-    def put(self, request, *srgs,**kwargs):
-        pk = kwargs.get("pk",None)
-        if not pk:
-            return Response({"error":"Method PUT not allowed"})
-        try:
-            instance = Post.objects.get(pk=pk)
-        except:
-            return Response({"error":"Oject does not exists"})
-
-        serializer = NewsSerializer(data = request.data, instance=instance)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response({"post":serializer.data})
+class NewsAPIUpdate(generics.UpdateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = NewsSerializer
 
 
-
+# class NewsAPIView(APIView):
+#     def get(self,request):
+#         p = Post.objects.all().values()
+#         return Response({'post':NewsSerializer(p, many=True).data})
+#
+#     def post(self,request):
+#         serializer = NewsSerializer(data= request.data)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#
+#         return Response({'post': serializer.data})
+#
+#     def put(self, request, *srgs,**kwargs):
+#         pk = kwargs.get("pk",None)
+#         if not pk:
+#             return Response({"error":"Method PUT not allowed"})
+#         try:
+#             instance = Post.objects.get(pk=pk)
+#         except:
+#             return Response({"error":"Oject does not exists"})
+#
+#         serializer = NewsSerializer(data = request.data, instance=instance)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#         return Response({"post":serializer.data})
+#
+#     def delete(self, request, *srgs,**kwargs):
+#         pk = kwargs.get("pk", None)
+#         if not pk:
+#             return Response({"error": "Method DELETE not allowed"})
+#
+#         return Response({"post":"delete post" + str(pk)})

@@ -27,9 +27,11 @@ urlpatterns = [
     # Каталог
     path('shop/',shop,name='shop' ),
 
-    path('api/v1/postlist/', NewsAPIView.as_view()),
-    path('api/v1/postlist/<int:pk>/', NewsAPIView.as_view())
-
+    # path('api/v1/postlist/', NewsAPIView.as_view()),
+    # path('api/v1/postlist/<int:pk>/', NewsAPIView.as_view())
+    path('api/v1/postlist/', NewsAPIList.as_view()),
+    # path('api/v1/postlist/<int:pk>/', NewsAPIList.as_view()),
+    path('api/v1/postlist/<int:pk>/', NewsAPIUpdate.as_view())
 
 
 ]
