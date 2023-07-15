@@ -31,7 +31,9 @@ urlpatterns = [
     # path('api/v1/postlist/<int:pk>/', NewsAPIView.as_view())
     path('api/v1/postlist/', NewsAPIList.as_view()),
     # path('api/v1/postlist/<int:pk>/', NewsAPIList.as_view()),
-    path('api/v1/postlist/<int:pk>/', NewsAPIUpdate.as_view())
+    # path('api/v1/postlist/<int:pk>/', NewsAPIUpdate.as_view()),
+    path('api/v1/postlist/<int:pk>/', NewsAPIDelete.as_view())
+
 
 
 ]
