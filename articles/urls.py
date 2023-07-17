@@ -2,6 +2,10 @@ from django.urls import path, include
 
 from . import admin
 from .views import *
+from rest_framework import routers
+
+router = routers.SimpleRouter()
+router.register(r'post', NewsViewSet)
 
 urlpatterns = [
     path('',index,name='index' ),
@@ -29,12 +33,13 @@ urlpatterns = [
 
     # path('api/v1/postlist/', NewsAPIView.as_view()),
     # path('api/v1/postlist/<int:pk>/', NewsAPIView.as_view())
-    path('api/v1/postlist/', NewsAPIList.as_view()),
+    # path('api/v1/postlist/', NewsAPIList.as_view()),
     # path('api/v1/postlist/<int:pk>/', NewsAPIList.as_view()),
     # path('api/v1/postlist/<int:pk>/', NewsAPIUpdate.as_view()),
-    path('api/v1/postlist/<int:pk>/', NewsAPIDelete.as_view()),
-    path('api/v1/postdetail/<int:pk>/', NewsAPIDetailView.as_view())
+    # path('api/v1/postlist/<int:pk>/', NewsAPIDelete.as_view()),
+    # path('api/v1/postdetail/<int:pk>/', NewsAPIDetailView.as_view())
 
-
-
+    # path('api/v1/postlist/', NewsViewSet.as_view({'get':'list'})),
+    # path('api/v1/postlist/<int:pk>/', NewsViewSet.as_view({'put':'update'})),
+    path('api/v1/', include(router.urls)),
 ]

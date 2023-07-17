@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 
 # Create your views here.
-from rest_framework import generics
+from rest_framework import generics, viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -178,25 +178,33 @@ def test(request):
 def shop(request):
     return render(request, 'shop/catalog.html')
 
+class NewsViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = NewsSerializer
+
+
+
 # class NewsAPIView(generics.ListAPIView):
 #    queryset = Post.objects.all()
 #    serializer_class = NewsSerializer
 
-class NewsAPIList(generics.ListCreateAPIView):
-    queryset = Post.objects.all()
-    serializer_class = NewsSerializer
+# class NewsAPIList(generics.ListCreateAPIView):
+#     queryset = Post.objects.all()
+#     serializer_class = NewsSerializer
+#
+# class NewsAPIUpdate(generics.UpdateAPIView):
+#     queryset = Post.objects.all()
+#     serializer_class = NewsSerializer
+#
+# class NewsAPIDelete(generics.DestroyAPIView):
+#     queryset = Post.objects.all()
+#     serializer_class = NewsSerializer
+#
+# class NewsAPIDetailView(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = Post.objects.all()
+#     serializer_class = NewsSerializer
 
-class NewsAPIUpdate(generics.UpdateAPIView):
-    queryset = Post.objects.all()
-    serializer_class = NewsSerializer
 
-class NewsAPIDelete(generics.DestroyAPIView):
-    queryset = Post.objects.all()
-    serializer_class = NewsSerializer
-
-class NewsAPIDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Post.objects.all()
-    serializer_class = NewsSerializer
 # class NewsAPIView(APIView):
 #     def get(self,request):
 #         p = Post.objects.all().values()
