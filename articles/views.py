@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 
 # Create your views here.
 from rest_framework import generics, viewsets
+from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -182,7 +183,11 @@ class NewsViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = NewsSerializer
 
-
+    @action(methods=['get'], detail=False)
+    # detail=False, detail=True
+    def category(self,request):
+        cats = Category.objects.all()
+        return Response({'cats':[c.name for c in cats]})
 
 # class NewsAPIView(generics.ListAPIView):
 #    queryset = Post.objects.all()
