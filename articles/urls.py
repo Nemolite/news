@@ -4,8 +4,16 @@ from . import admin
 from .views import *
 from rest_framework import routers
 
-router = routers.SimpleRouter()
+# router = routers.SimpleRouter()
+router = routers.DefaultRouter()
 router.register(r'post', NewsViewSet)
+print(router.urls)
+
+# Вывод в консоле
+# [<URLPattern '^post/$' [name='post-list']>, <URLPattern '^post\.(?P<format>[a-z0-9]+)/?$' [name='post-list']>, <URLPattern '^post/category/$' [name='post-category']>, <URLPattern '^post/ca
+# tegory\.(?P<format>[a-z0-9]+)/?$' [name='post-category']>, <URLPattern '^post/(?P<pk>[^/.]+)/$' [name='post-detail']>, <URLPattern '^post/(?P<pk>[^/.]+)\.(?P<format>[a-z0-9]+)/?$' [name='p
+# ost-detail']>, <URLPattern '^$' [name='api-root']>, <URLPattern '^\.(?P<format>[a-z0-9]+)/?$' [name='api-root']>]
+
 
 urlpatterns = [
     path('',index,name='index' ),
